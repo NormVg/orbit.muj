@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box for">
     <div class="bgd">FOR ??</div>
 
     <div class="fg">

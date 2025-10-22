@@ -3,9 +3,9 @@
 
     <div class="footer-link">
 
-      <div class="nav-item">LINKEDIN</div><span>•</span>
-      <div class="nav-item">TWITTER / X</div><span>•</span>
-      <div class="nav-item">EMAIL</div>
+      <a href="https://www.linkedin.com/in/vishnu-gupta-b5b634254/" target="_blank" rel="noopener noreferrer" class="nav-item">LINKEDIN</a><span>•</span>
+      <a href="https://twitter.com/TheNormVg" target="_blank" rel="noopener noreferrer" class="nav-item">TWITTER / X</a><span>•</span>
+      <a href="mailto:thealphaones.work@gmail.com" class="nav-item">EMAIL</a>
 
     </div>
 
@@ -45,6 +45,13 @@
 
 .nav-item {
   position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.nav-item:visited {
+  color: inherit;
 }
 
 .nav-item::after {

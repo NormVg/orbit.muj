@@ -4,7 +4,7 @@
 
     <div class="content">
       <div class="l1">BELONG "EXCLUSIVE"</div>
-      <button class="apply-btn" tabindex="0">APPLY NOW</button>
+      <a href="https://forms.gle/XcWMhkwzNNoyEcFc8" target="_blank" rel="noopener noreferrer" class="apply-btn">APPLY NOW</a>
       <div class="l2">WELCOME TO ORBIT</div>
     </div>
   </div>
@@ -56,6 +56,9 @@
   transition: all 0.3s ease;
   outline: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 /* Hover state */

@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box why">
     <div class="bgd">WHY ??</div>
 
     <div class="fg">

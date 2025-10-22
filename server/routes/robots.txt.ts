@@ -1,4 +1,5 @@
-User-Agent: *
+export default defineEventHandler(async (event) => {
+  const robots = `User-Agent: *
 Allow: /
 
 # Disallow form pages from being indexed
@@ -12,4 +13,8 @@ Allow: /index
 Sitemap: https://orbit.taohq.org/sitemap.xml
 
 # Crawl-delay for better server performance
-Crawl-delay: 1
+Crawl-delay: 1`
+
+  setHeader(event, 'Content-Type', 'text/plain')
+  return robots
+})
