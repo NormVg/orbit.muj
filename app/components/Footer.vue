@@ -14,7 +14,7 @@
     <div class="l3"></div>
     <div class="l4"></div>
     <div class="l5"></div>
-    <div class="l6">POWERED BY TheAlphaOnes</div>
+    <div class="l6">POWERED BY  <a href="https://taohq.org" target="_blank" rel="noopener noreferrer" class="powered-by-link"> TheAlphaOnes</a></div>
 
   </div>
 </template>
@@ -26,6 +26,21 @@
 </script>
 
 <style scoped>
+
+.powered-by-link{
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  margin-left: 5px;
+    transition: color 0.2s ease;
+}
+
+
+
+.powered-by-link:hover,
+.powered-by-link:focus {
+  color: crimson;
+}
 
 .footer{
   display: flex;

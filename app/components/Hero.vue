@@ -101,10 +101,76 @@ const scrollToSection = (sectionId: string) => {
 .hero-banner img{
   width: calc(100% - 40px);
   margin: 20px;
+    border-radius: 10px;
 
 }
 
 .head-logo{
   height: 100px;
+}
+
+@media (max-width: 600px) {
+  .head-main {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 25px;
+    /* border: 1px solid salmon; */
+  }
+
+  .head-name {
+    font-size: 75px;
+    line-height: 1;
+  }
+
+  .head-logo {
+    height: 56px;
+    align-self: flex-end;
+  }
+
+  .head-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  /* hide separator dots on small screens */
+  .head-nav span {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 6px 8px;
+  }
+
+  .hero-head {
+    margin: 12px;
+    margin-top: 0;
+  }
+
+  .hero-banner img {
+    width: calc(100% - 24px);
+    height: 70vh;
+    margin: 12px;
+    object-fit: cover;
+    object-position: 52% 50%;
+  }
+}
+
+@media (max-width: 360px) {
+  .head-name {
+    font-size: 36px;
+  }
+
+  .head-logo {
+    height: 48px;
+  }
+
+  .head-nav {
+    font-size: 13px;
+    gap: 6px;
+  }
 }
 </style>
