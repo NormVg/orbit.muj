@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@vercel/analytics':
+        specifier: ^1.5.0
+        version: 1.5.0(vue-router@4.5.1(vue@3.5.22))(vue@3.5.22)
       motion-v:
         specifier: ^1.7.3
         version: 1.7.3(@vueuse/core@14.0.0(vue@3.5.22))(vue@3.5.22)
@@ -1011,6 +1014,32 @@ packages:
     resolution: {integrity: sha512-7BYjHfOaoZ9+ARJkT10Q2TjnTUqDXmMpfakIAsD/hXiuff1oqWg1xeXT5+MomhNcC15HbiABpbbBmITLSHxdKg==}
     peerDependencies:
       vue: '>=3.5.18'
+
+  '@vercel/analytics@1.5.0':
+    resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
+    peerDependencies:
+      '@remix-run/react': ^2
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@vercel/nft@0.30.2':
     resolution: {integrity: sha512-pquXF3XZFg/T3TBor08rUhIGgOhdSilbn7WQLVP/aVSSO+25Rs4H/m3nxNDQ2x3znX7Z3yYjryN8xaLwypcwQg==}
@@ -4127,6 +4156,11 @@ snapshots:
       hookable: 5.5.3
       unhead: 2.0.19
       vue: 3.5.22
+
+  '@vercel/analytics@1.5.0(vue-router@4.5.1(vue@3.5.22))(vue@3.5.22)':
+    optionalDependencies:
+      vue: 3.5.22
+      vue-router: 4.5.1(vue@3.5.22)
 
   '@vercel/nft@0.30.2(rollup@4.52.4)':
     dependencies:

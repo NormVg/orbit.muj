@@ -1,7 +1,7 @@
 <template>
-  <div class="footer">
+  <div class="footer" ref="domRef">
 
-    <div class="footer-link">
+    <div class="footer-link" :class="{ 'animate-links': isInView, 'fade-out': !isInView }">
 
       <a href="https://www.linkedin.com/in/vishnu-gupta-b5b634254/" target="_blank" rel="noopener noreferrer" class="nav-item">LINKEDIN</a><span>•</span>
       <a href="https://twitter.com/TheNormVg" target="_blank" rel="noopener noreferrer" class="nav-item">TWITTER / X</a><span>•</span>
@@ -9,20 +9,30 @@
 
     </div>
 
-    <div class="l1"></div>
-    <div class="l2"></div>
-    <div class="l3"></div>
-    <div class="l4"></div>
-    <div class="l5"></div>
-    <div class="l6">POWERED BY  <a href="https://taohq.org" target="_blank" rel="noopener noreferrer" class="powered-by-link"> TheAlphaOnes</a></div>
+    <div class="l1" :class="{ 'animate-l1': isInView, 'fade-out': !isInView }"></div>
+    <div class="l2" :class="{ 'animate-l2': isInView, 'fade-out': !isInView }"></div>
+    <div class="l3" :class="{ 'animate-l3': isInView, 'fade-out': !isInView }"></div>
+    <div class="l4" :class="{ 'animate-l4': isInView, 'fade-out': !isInView }"></div>
+    <div class="l5" :class="{ 'animate-l5': isInView, 'fade-out': !isInView }"></div>
+    <div class="l6" :class="{ 'animate-l6': isInView, 'fade-out': !isInView }">POWERED BY  <a href="https://taohq.org" target="_blank" rel="noopener noreferrer" class="powered-by-link"> TheAlphaOnes</a></div>
 
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useInView } from 'motion-v'
 
+const domRef = ref()
+const isInView = useInView(domRef, {
+  once: true,
+  threshold: 0.3,
+  rootMargin: '0px 0px -10% 0px'
+})
 
-
+// Log for debugging
+watch(isInView, (inView) => {
+  console.log('Footer element is in view: ', inView)
+})
 </script>
 
 <style scoped>
@@ -56,6 +66,7 @@
   flex-direction: row;
   gap: 10px;
   margin-bottom: 10px;
+  opacity: 0;
 }
 
 .nav-item {
@@ -94,7 +105,7 @@
   background-color: black;
   margin-bottom: 25px;
   border-radius: 1px;
-
+  opacity: 0;
 }
 .l2{
   height: calc(60px / (1.618*4));
@@ -102,16 +113,15 @@
   background-color: black;
   margin-bottom: 25px;
   border-radius: 2px;
-
+  opacity: 0;
 }
 .l3{
   height: calc(60px / (1.618*3));
   width: calc(100% - 40px);
   background-color: black;
   margin-bottom: 25px;
-
   border-radius: 2.5px;
-
+  opacity: 0;
 }
 
 .l4{
@@ -120,7 +130,7 @@
   background-color: black;
   margin-bottom: 25px;
   border-radius: 3px;
-
+  opacity: 0;
 }
 
 .l5{
@@ -129,7 +139,7 @@
   background-color: black;
   margin-bottom: 25px;
   border-radius: 5px;
-
+  opacity: 0;
 }
 
 .l6{
@@ -137,13 +147,93 @@
   width: calc(100% - 40px);
   background-color: black;
   margin-bottom: 25px;
-
   color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 5px;
+  opacity: 0;
+}
+
+/* Scroll-triggered animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-links {
+  animation: slideInUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animate-l1 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.animate-l2 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.animate-l3 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.animate-l4 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 1.0s;
+  opacity: 0;
+}
+
+.animate-l5 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+.animate-l6 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+.fade-out {
+  animation: fadeOut 0.8s ease-out forwards;
+  animation-delay: 0s;
 }
 
 

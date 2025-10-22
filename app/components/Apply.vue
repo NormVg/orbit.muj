@@ -2,16 +2,27 @@
   <div class="box">
     <img src="~/assets/apply-bg.png" alt="Background" class="bg-image">
 
-    <div class="content">
-      <div class="l1">BELONG "EXCLUSIVE"</div>
-      <a href="https://forms.gle/XcWMhkwzNNoyEcFc8" target="_blank" rel="noopener noreferrer" class="apply-btn">APPLY NOW</a>
-      <div class="l2">WELCOME TO ORBIT</div>
+    <div class="content" ref="domRef">
+      <div class="l1" :class="{ 'animate-l1': isInView, 'fade-out': !isInView }">BELONG "EXCLUSIVE"</div>
+      <a href="https://forms.gle/XcWMhkwzNNoyEcFc8" target="_blank" rel="noopener noreferrer" class="apply-btn" :class="{ 'animate-btn': isInView, 'fade-out': !isInView }">APPLY NOW</a>
+      <div class="l2" :class="{ 'animate-l2': isInView, 'fade-out': !isInView }">WELCOME TO ORBIT</div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useInView } from 'motion-v'
 
+const domRef = ref()
+const isInView = useInView(domRef, {
+  threshold: 0.3,
+  rootMargin: '0px 0px -10% 0px'
+})
+
+// Log for debugging
+watch(isInView, (inView) => {
+  console.log('Apply element is in view: ', inView)
+})
 </script>
 
 <style scoped>
@@ -60,6 +71,7 @@
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  opacity: 0;
 }
 
 /* Hover state */
@@ -91,8 +103,8 @@
 .l1 {
   /* font-size: 125px; */
   font-size: 10vw;
-
   font-family: var(--font1);
+  opacity: 0;
 }
 
 .l2 {
@@ -100,6 +112,53 @@
   font-size: 10vw;
   font-family: var(--font1);
   letter-spacing: 15%;
+  opacity: 0;
+}
+
+/* Scroll-triggered animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-l1 {
+  animation: slideInUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animate-l2 {
+  animation: slideInUp 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.animate-btn {
+  animation: slideInUp 0.8s ease-out forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+.fade-out {
+  animation: fadeOut 0.8s ease-out forwards;
+  animation-delay: 0s;
 }
 
 @media (max-width: 600px) {

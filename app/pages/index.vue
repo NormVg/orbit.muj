@@ -3,6 +3,7 @@
     <Hero />
     <Why/>
     <For/>
+    <MovingMarquee/>
     <Apply/>
     <Footer/>
   </div>
@@ -45,8 +46,7 @@ useHead({
   link: [
     { rel: 'canonical', href: 'https://orbit.taohq.org' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-    { rel: 'manifest', href: '/site.webmanifest' }
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }
   ],
   meta: [
     { name: 'msapplication-TileColor', content: '#000000' },

@@ -1,29 +1,42 @@
 <template>
-  <div class="box why">
-    <div class="bgd">WHY ??</div>
+  <div class="box why" >
+    <div class="bgd" >WHY ??</div>
 
-    <div class="fg">
+    <div class="fg" ref="domRef">
       <div class="title">
-        <span>GROW,</span> <span> CONNECT,</span> <span>EVOLVE.</span>
+        <span :class="{ 'animate-title-1': isInView, 'fade-out': !isInView }">GROW,</span>
+        <span :class="{ 'animate-title-2': isInView, 'fade-out': !isInView }"> CONNECT,</span>
+        <span :class="{ 'animate-title-3': isInView, 'fade-out': !isInView }">EVOLVE.</span>
       </div>
-      <div class="banner">
-        <div>
-
-          Orbit.MUJ is built on three core ideas — Build. Connect. Evolve.It’s a
+      <div class="banner" :class="{ 'animate-banner': isInView, 'fade-out': !isInView }" ref="domRef2">
+        <div :class="{ 'animate-banner-text': isInView2, 'fade-out': !isInView2 }">
+          Orbit.MUJ is built on three core ideas — Build. Connect. Evolve.It's a
           space where initiative meets collaboration. Members turn ideas into
-          action, learn from each other, and grow together. Orbit isn’t about
-          status or noise — it’s about progress, clarity, and movement toward
-          what’s next.
+          action, learn from each other, and grow together. Orbit isn't about
+          status or noise — it's about progress, clarity, and movement toward
+          what's next.
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script setup>
+import { useInView } from 'motion-v'
+
+const domRef = ref()
+const isInView = useInView(domRef, { amount: 0.5 })
+
+const domRef2 = ref()
+const isInView2 = useInView(domRef2, { amount: 1 })
+
+
+// watch(isInView, (inView) => {
+//   console.log('Element is in view: ', inView)
+// })
+</script>
 
 <style scoped>
-
 .box{
   margin: 20px;
 }
@@ -51,8 +64,11 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: row;
-
   gap: 10px;
+}
+
+.title span {
+  opacity: 0;
 }
 
 .banner{
@@ -66,13 +82,105 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  opacity: 0;
 }
 
 .banner div{
   font-size: 22px;
   margin: 30px;
   width: 70%;
-  /* border: 1px solid salmon; */
+  opacity: 0;
+}
+
+/* Scroll-triggered animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bgdSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bgdFadeOut {
+  from {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-in {
+  animation: bgdSlideIn 0.8s ease-out forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.animate-title-1 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.animate-title-2 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.animate-title-3 {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+.animate-banner {
+  animation: slideInUp 0.8s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.animate-banner-text {
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.fade-out {
+  animation: fadeOut 0.8s ease-out forwards;
+  animation-delay: 0s;
+}
+
+.bgd.fade-out {
+  animation: bgdFadeOut 0.8s ease-out forwards;
+  animation-delay: 0s;
 }
 
 @media (max-width: 600px) {
@@ -92,9 +200,8 @@
   }
   .title span {
     display: inline-block;
-     margin-right: 6px;
-
-   }
+    margin-right: 6px;
+  }
   .banner {
     width: 100%;
     aspect-ratio: 16/9;

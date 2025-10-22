@@ -3,15 +3,15 @@
     <div class="hero-head">
       <div class="head-main">
 
-        <div class="head-name" >ORBIT.MUJ</div>
-        <img :src="Logo" alt="" class="head-logo">
+        <div class="head-name animate-slide-up" >ORBIT.MUJ</div>
+        <img :src="Logo" alt="" class="head-logo animate-fade-in">
       </div>
-      <div class="head-nav">
-        <a href="https://forms.gle/XcWMhkwzNNoyEcFc8" target="_blank" rel="noopener noreferrer" class="nav-item">APPLY</a><span>•</span>
-        <div class="nav-item" @click="scrollToSection('why')">WHY</div><span>•</span>
-        <div class="nav-item" @click="scrollToSection('for')">FOR</div><span>•</span>
-        <a href="mailto:thealphaones.work@gmail.com" class="nav-item">CONTACT</a><span>•</span>
-        <NuxtLink to="/policy" class="nav-item">POLICY</NuxtLink>
+      <div class="head-nav animate-slide-up-delayed">
+        <a href="https://forms.gle/XcWMhkwzNNoyEcFc8" target="_blank" rel="noopener noreferrer" class="nav-item nav-item-1">APPLY</a><span class="nav-dot nav-dot-1">•</span>
+        <div class="nav-item nav-item-2" @click="scrollToSection('why')">WHY</div><span class="nav-dot nav-dot-2">•</span>
+        <div class="nav-item nav-item-3" @click="scrollToSection('for')">FOR</div><span class="nav-dot nav-dot-3">•</span>
+        <a href="mailto:thealphaones.work@gmail.com" class="nav-item nav-item-4">CONTACT</a><span class="nav-dot nav-dot-4">•</span>
+        <NuxtLink to="/policy" class="nav-item nav-item-5">POLICY</NuxtLink>
 
       </div>
     </div>
@@ -108,6 +108,123 @@ const scrollToSection = (sectionId: string) => {
 .head-logo{
   height: 100px;
 }
+
+/* Page Load Animations */
+@keyframes dotFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInTwist {
+  from {
+    opacity: 0;
+    transform: scale(0.9) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes navItemFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fadeInTwist 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.animate-slide-up-delayed {
+  opacity: 1;
+}
+
+/* Individual nav item animations */
+.nav-item-1 {
+  animation: navItemFade 0.6s ease-out forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.nav-item-2 {
+  animation: navItemFade 0.6s ease-out forwards;
+  animation-delay: 1.0s;
+  opacity: 0;
+}
+
+.nav-item-3 {
+  animation: navItemFade 0.6s ease-out forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+.nav-item-4 {
+  animation: navItemFade 0.6s ease-out forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+.nav-item-5 {
+  animation: navItemFade 0.6s ease-out forwards;
+  animation-delay: 1.6s;
+  opacity: 0;
+}
+
+/* Navigation dot animations */
+.nav-dot-1 {
+  animation: dotFade 0.4s ease-out forwards;
+  animation-delay: 1.0s;
+  opacity: 0;
+}
+
+.nav-dot-2 {
+  animation: dotFade 0.4s ease-out forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+.nav-dot-3 {
+  animation: dotFade 0.4s ease-out forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+.nav-dot-4 {
+  animation: dotFade 0.4s ease-out forwards;
+  animation-delay: 1.6s;
+  opacity: 0;
+}
+
+/* Remove unused animations */
 
 @media (max-width: 600px) {
   .head-main {
