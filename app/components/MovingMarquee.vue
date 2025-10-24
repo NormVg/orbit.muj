@@ -14,7 +14,7 @@ const { scrollYProgress } = useScroll()
 // Map scroll progress (0 to 1) to horizontal movement (-200px to 200px)
 // When scrolling down (progress increases), move left
 // When scrolling up (progress decreases), move right
-const x = useTransform(scrollYProgress, [0, 1], [400, -400])
+const x = useTransform(scrollYProgress, [0, 1], [1000, -1000])
 </script>
 
 <style scoped>
